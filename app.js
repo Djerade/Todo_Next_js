@@ -5,10 +5,10 @@ const app = express();
 const PORT = process.env.PORT
 
 app.get('/',(req,res) =>{
-    res.send("salut")
+    res.send("hello word")
 })
 
 app.listen(PORT, () => {
-    console.log('serveur function');
+    console.log('serveur running');
 })
 
