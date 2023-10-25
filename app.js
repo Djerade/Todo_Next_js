@@ -2,7 +2,7 @@ const express = require('express');
 const { db } = require('./Config/db');
 const app = express();
 
-const PORT = process.env.PORT
+const PORT = 5000
 
 app.get('/',(req,res) =>{
     res.send("hello word")
