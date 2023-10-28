@@ -1,7 +1,11 @@
 
 const mongoose = require('mongoose')
 
-const URL = 'mongodb://0.0.0.0:27017/Todo'
+const MONGODB_URL = 'mongodb://0.0.0.0:27017/Todo'
 
-const  db = mongoose.connect(URL)
+const db = async () => {
+  await mongoose.connect(MONGODB_URL)
+}
+
+export default db;
 
