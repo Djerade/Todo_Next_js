@@ -1,9 +1,11 @@
 const NewTask = `
     title: String!,
     description: String,
+    completed: String,
+    priority: String
     `
 
-export const Task = `
+export default Task = `
     createTask(${NewTask}): Task!
-    updateTAsk(${NewTask}): Task!
+    updateTask(${NewTask}): Task!
     `

@@ -1,5 +1,5 @@
-import { Task } from "./Task";
+import { Task } from "./Task.js";
 
 const Types = [Task];
 
-export {Types};
+export default {Types};

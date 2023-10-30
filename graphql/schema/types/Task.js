@@ -3,4 +3,5 @@ type Poll {
     _id: String!
     title: String!
     comment: String
+    priority: String
 }`

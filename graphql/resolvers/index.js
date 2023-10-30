@@ -1,6 +1,5 @@
-export default {
-         createTask: async ()  {
-          
-        }
-        
+import  Task  from "./task.js";
+
+export const resolver = {
+        ...Task
 }

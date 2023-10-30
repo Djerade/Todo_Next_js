@@ -1,7 +1,10 @@
-const { graphqlHTTP } = require('express-graphql');
-const express = require('express');
+import  graphqlHTTP from 'express-graphql';
+import express from 'express'
 
-const { db } = require('./Config/db');
+//import
+import { db } from './Config/db.js';
+import { resolver } from "./graphql/resolvers/index.js";
+import { schema } from "./graphql/schema/index.js";
 
 //Port
 const PORT = 5000
@@ -19,5 +22,7 @@ app.listen(PORT, () => {
 })
 
 //GraphQl
-app.use('/graphql',GrapqleHTTP());
+app.use('/graphql', graphqlHTTP({
+
+}));
 

@@ -12,6 +12,9 @@ var taskSchema  = new mongoose.Schema(
         },
         completed: {
             type: Boolean
+        },
+        priority: {
+            type: String
         }
     },
     {

@@ -1,10 +1,10 @@
 import { buildSchema } from "graphql";
 
 // Imports
-import { Types } from "./types/Task.js";
+import  Types  from "./types/index?js";
 
-import { Mutation } from "./Mutation/task.js";
-import { Queries } from "./queries/Task.js";
+import  Mutation  from "./Mutation/task.js";
+import  Queries  from "./queries/Task.js";
 
 
 
