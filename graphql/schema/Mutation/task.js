@@ -4,8 +4,8 @@ const NewTask = `
     completed: String,
     priority: String
     `
-
-export default Task = `
+const Task = `
     createTask(${NewTask}): Task!
     updateTask(${NewTask}): Task!
     `
+export default Task;
