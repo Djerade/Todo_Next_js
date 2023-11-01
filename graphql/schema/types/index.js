@@ -1,5 +1,5 @@
 import { Task } from "./Task.js";
+import { Todo} from "./Todo.js";
+const Types = {Task, Todo};
 
-const Types = [Task];
-
-export default {Types};
+export default { Types};

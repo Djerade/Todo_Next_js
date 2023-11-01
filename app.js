@@ -23,6 +23,10 @@ app.listen(PORT, () => {
 
 //GraphQl
 app.use('/graphql', graphqlHTTP({
-
+    schema,
+    rootValue: resolver,
+    graphiql: true
 }));
+
+
 

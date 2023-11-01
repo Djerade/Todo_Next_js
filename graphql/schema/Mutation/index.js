@@ -1,4 +1,4 @@
-import Task from './Task.js'
+import Task from '../Mutation/Task.js'
 
 const Mutations = [Task]
 

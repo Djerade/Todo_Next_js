@@ -1,4 +1,4 @@
-export const Task = `
+export const Todo = `
 type Task {
     _id: String!
     title: String!
