@@ -6,9 +6,8 @@ import  Mutation  from "./Mutation/index.js";
 import  Queries  from "./queries/index.js";
 import types from "./types/index.js";
 
-
-
 export const schema = buildSchema(`
+
 input newtTask {
   title: String!
   description: String
@@ -17,10 +16,10 @@ input newtTask {
   }
         
 type Task {
-_id: String!
-title: String!
-comment: String
-priority: String
+  _id: String!
+  title: String!
+  description: String
+  priority: String
 }
 
 type Querie {
@@ -37,5 +36,4 @@ schama {
  query : Querie
  mutation: Mutation
 }
-
 `)

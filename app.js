@@ -21,7 +21,7 @@ app.listen(PORT, () => {
     console.log('serveur running');
 })
 
-//GraphQl
+//configuration de GraphQl
 app.use('/graphql', graphqlHTTP({
     schema,
     rootValue: resolver,

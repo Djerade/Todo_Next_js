@@ -1,6 +1,6 @@
 const NewTask = `
     title: String!,
-    description: String,
+    description: String!,
     completed: String,
     priority: String
     `
