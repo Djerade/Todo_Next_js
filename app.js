@@ -1,9 +1,10 @@
-const { graphqlHTTP } = require('express-graphql');
-const express = require('express');
+import {graphqlHTTP} from 'express-graphql';
+import express from 'express';
 
-require('dotenv').Config()
-
-const { db } = require('./Config/db');
+//import
+// import { db } from './Config/db.js';
+import { resolver } from "./graphql/resolvers/index.js";
+import { schema } from "./graphql/schema/index.js";
 
 //Port
 const PORT = process.env.PORT || 5000;
@@ -13,13 +14,19 @@ const app = express();
 
 
 app.get('/',(req,res) =>{
-    res.send("hello word")
+    res.send("Serveur Todo")
 })
-//Teste de rout                                     
+//Teste de rout
 app.listen(PORT, () => {
     console.log('serveur running');
 })
 
-//GraphQl
-app.use('/graphql',GrapqleHTTP());
+//configuration de GraphQl
+app.use('/graphql', graphqlHTTP({
+    schema,
+    rootValue: resolver,
+    graphiql: process.env.NODE_ENV === 'devlopment'
+}));
+
+
 

@@ -10,9 +10,12 @@ var taskSchema  = new mongoose.Schema(
         description: {
             type: String
         },
-        completed: {
-            type: Boolean
-        }
+        Status: {
+            type: String
+        },
+        priority: {
+            type: String
+        } 
     },
     {
         timestamps: true
