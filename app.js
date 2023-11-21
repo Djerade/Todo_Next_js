@@ -25,7 +25,7 @@ app.listen(PORT, () => {
 app.use('/graphql', graphqlHTTP({
     schema,
     rootValue: resolver,
-    graphiql: process.env.NODE_ENV === 'devlopment'
+    graphiql: true
 }));
 
 
