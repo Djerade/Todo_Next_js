@@ -10,7 +10,7 @@ var taskSchema  = new mongoose.Schema(
         description: {
             type: String
         },
-        Status: {
+        status: {
             type: String
         },
         priority: {

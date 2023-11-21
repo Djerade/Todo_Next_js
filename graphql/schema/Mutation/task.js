@@ -1,7 +1,7 @@
 const NewTask = `
     title: String!,
-    description: String!,
-    completed: String,
+    description: String,
+    status: String,
     priority: String
     `
 export const Task = `
