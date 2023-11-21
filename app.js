@@ -2,7 +2,7 @@ import {graphqlHTTP} from 'express-graphql';
 import express from 'express';
 
 //import
-// import { db } from './Config/db.js';
+import { db } from './Config/db.js';
 import { resolver } from "./graphql/resolvers/index.js";
 import { schema } from "./graphql/schema/index.js";
 
@@ -16,11 +16,6 @@ const app = express();
 app.get('/',(req,res) =>{
     res.send("Serveur Todo")
 })
-//Teste de rout
-app.listen(PORT, () => {
-    console.log('serveur running');
-})
-
 //configuration de GraphQl
 app.use('/graphql', graphqlHTTP({
     schema,
@@ -28,5 +23,12 @@ app.use('/graphql', graphqlHTTP({
     graphiql: true
 }));
 
-
+//db
+db.then(() => {
+    app.listen(PORT, () => {
+    console.log('serveur running');
+    })
+}).catch((err) => {
+    console.error(err);
+});
 
