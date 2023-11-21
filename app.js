@@ -16,7 +16,7 @@ const app = express();
 app.get('/',(req,res) =>{
     res.send("hello word")
 })
-//Teste de rout
+//Teste de route
 app.listen(PORT, () => {
     console.log('serveur running');
 })
