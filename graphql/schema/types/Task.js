@@ -3,6 +3,6 @@ type Task {
     _id: String!
     title: String!
     description: String!
-    status: Boolean
+    status: String
     priority: String
 }`
