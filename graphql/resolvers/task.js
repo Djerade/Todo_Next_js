@@ -18,13 +18,16 @@ export default {
               ...taskSaved._doc
            }
         },
-   updateTask: async () => {
-      return 
-   },
-   task: async () => {
-      return 
-        },
+   // updateTask: async () => {
+   //    return 
+   // },
+   // task: async () => {
+   //    return 
+   //      },
    tasks: async () => {
-       return 
+      const allTask = await Task.find();
+      return allTask.map((task) => { 
+         return { ...task._doc }
+       })
      }
 }
