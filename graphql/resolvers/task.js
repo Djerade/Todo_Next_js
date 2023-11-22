@@ -14,7 +14,6 @@ export default {
       priority
       });
       const taskSaved = await task.save();
-      console.log('sdsd');
       return {
               ...taskSaved._doc
            }
