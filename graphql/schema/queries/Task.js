@@ -1,4 +1,4 @@
 export const Task = `
-    tasks: [Task]!
-    task(_id: String) : Task
+    getAllTasks: [Task]!
+    getTask(_id: String) : Task
 `

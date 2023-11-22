@@ -18,13 +18,42 @@ export default {
               ...taskSaved._doc
            }
         },
-   // updateTask: async () => {
-   //    return 
-   // },
-   // task: async () => {
-   //    return 
-   //      },
-   tasks: async () => {
+   updateTask: async ({
+      _id,
+      title,
+      description,
+      status,
+      priority
+   }) => {
+      const taskDelected = await Task.findByIdAndUpdate(
+         { _id: `${_id}` }, {
+            $set: {
+            title,
+            description,
+            status,
+            priority
+            }
+      },
+         {
+         new: true
+      })
+       return {
+          ...taskDelected._doc
+       }
+   },
+   deleteTask: async ({ _id }) => {
+      const taskDelected = await Task.findByIdAndDelete({ _id: `${_id}` }, { new: true })
+       return {
+          ...taskDelected._doc
+       }
+    },
+   getTask: async ({ _id }) => {
+      const task = await Task.findById({_id: `${_id}`})
+      return {
+         ...task._doc
+      }
+   },
+   getAllTasks: async () => {
       const allTask = await Task.find();
       return allTask.map((task) => { 
          return { ...task._doc }
