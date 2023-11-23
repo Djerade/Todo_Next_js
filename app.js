@@ -1,5 +1,6 @@
 import {graphqlHTTP} from 'express-graphql';
 import express from 'express';
+import  cors  from 'cors';
 
 //import
 import { db } from './Config/db.js';
@@ -12,10 +13,11 @@ const PORT = process.env.PORT || 5000;
 //initalisation du serveur
 const app = express();
 
-
+app.use(cors())
 app.get('/',(req,res) =>{
     res.send("Serveur Todo")
 })
+
 //configuration de GraphQl
 app.use('/graphql', graphqlHTTP({
     schema,
@@ -26,7 +28,6 @@ app.use('/graphql', graphqlHTTP({
 //db
 db.then(() => {
     app.listen(PORT, () => {
-    console.log('serveur running');
     })
 }).catch((err) => {
     console.error(err);
