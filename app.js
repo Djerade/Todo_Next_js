@@ -13,7 +13,10 @@ const PORT = process.env.PORT || 5000;
 //initalisation du serveur
 const app = express();
 
+//Autorisation d'accès
 app.use(cors())
+
+//Test de rout
 app.get('/',(req,res) =>{
     res.send("Serveur Todo")
 })

@@ -17,7 +17,8 @@ export default {
       return {
               ...taskSaved._doc
            }
-        },
+   },
+
    updateTask: async ({
       _id,
       title,
@@ -41,18 +42,25 @@ export default {
           ...taskDelected._doc
        }
    },
+
    deleteTask: async ({ _id }) => {
       const taskDelected = await Task.findByIdAndDelete({ _id: `${_id}` }, { new: true })
        return {
           ...taskDelected._doc
        }
-    },
+   },
+   
    getTask: async ({ _id }) => {
-      const task = await Task.findById({_id: `${_id}`})
+      try {
+         const task = await Task.findById({ _id: `${_id}` })
+      } catch (error) {
+         console.error(error.message);
+      }
       return {
          ...task._doc
       }
    },
+
    getAllTasks: async () => {
       const allTask = await Task.find();
       return allTask.map((task) => { 
