@@ -1,3 +1,4 @@
+import { GraphQLError } from "graphql";
 import { Task } from "../../Model/index.js";
 
 export default {
@@ -7,16 +8,20 @@ export default {
       status,
       priority
    }) => {
-      const task = new Task({
-      title,
-      description,
-      status,
-      priority
-      });
-      const taskSaved = await task.save();
-      return {
-              ...taskSaved._doc
-           }
+      try {
+         const task = new Task({
+         title,
+         description,
+         status,
+         priority
+         });
+         const taskSaved = await task.save();
+         return {
+                 ...taskSaved._doc
+              }
+      } catch (error) {
+         return Promise.reject(new GraphQLError(error.message))
+      }
    },
 
    updateTask: async ({
@@ -26,45 +31,57 @@ export default {
       status,
       priority
    }) => {
-      const taskDelected = await Task.findByIdAndUpdate(
-         { _id: `${_id}` }, {
-            $set: {
-            title,
-            description,
-            status,
-            priority
-            }
-      },
-         {
-         new: true
-      })
-       return {
-          ...taskDelected._doc
-       }
+      try {
+         const taskDelected = await Task.findByIdAndUpdate(
+            { _id: `${_id}` }, {
+               $set: {
+               title,
+               description,
+               status,
+               priority
+               }
+         },
+            {
+            new: true
+         })
+          return {
+             ...taskDelected._doc
+          }
+      } catch (error) {
+         return Promise.reject(new GraphQLError(error.message))
+      }
    },
 
    deleteTask: async ({ _id }) => {
-      const taskDelected = await Task.findByIdAndDelete({ _id: `${_id}` }, { new: true })
-       return {
-          ...taskDelected._doc
-       }
+      try {
+         const taskDelected = await Task.findByIdAndDelete({ _id: `${_id}` }, { new: true })
+         return {
+            ...taskDelected._doc
+         }
+      } catch (error) {
+         return Promise.reject(new GraphQLError(error.message))
+      }
    },
    
    getTask: async ({ _id }) => {
       try {
          const task = await Task.findById({ _id: `${_id}` })
+         return {
+            ...task._doc
+         }
       } catch (error) {
-         console.error(error.message);
-      }
-      return {
-         ...task._doc
+        return Promise.reject(new GraphQLError(error.message))
       }
    },
 
    getAllTasks: async () => {
-      const allTask = await Task.find();
-      return allTask.map((task) => { 
-         return { ...task._doc }
-       })
+      try {
+         const allTask = await Task.find();
+         return allTask.map((task) => { 
+            return { ...task._doc }
+         })
+      } catch (error) {
+         return Promise.reject(new GraphQLError(error.message))
+      }
      }
 }
