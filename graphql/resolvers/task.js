@@ -23,7 +23,7 @@ export default {
          return Promise.reject(new GraphQLError(error.message))
       }
    },
-
+   
    updateTask: async ({
       _id,
       title,
@@ -33,7 +33,10 @@ export default {
    }) => {
       try {
          const taskDelected = await Task.findByIdAndUpdate(
-            { _id: `${_id}` }, {
+            {
+               _id: `${_id}`
+            },
+            {
                $set: {
                title,
                description,
@@ -41,7 +44,7 @@ export default {
                priority
                }
          },
-            {
+         {
             new: true
          })
           return {
@@ -62,7 +65,29 @@ export default {
          return Promise.reject(new GraphQLError(error.message))
       }
    },
-   
+
+   doneTask: async ({_id,status}) => {
+      try {
+         const taskUpdated = await Task.findByIdAndUpdate(
+            {
+               _id: `${_id}`
+            },
+            {
+               $set: {
+               status
+               }
+         },
+         {
+            new: true
+         })
+         return {
+            ...taskUpdated._doc
+         }
+      } catch (error) {
+         return Promise.reject(new GraphQLError(error.message))
+      }
+   },
+
    getTask: async ({ _id }) => {
       try {
          const task = await Task.findById({ _id: `${_id}` })
