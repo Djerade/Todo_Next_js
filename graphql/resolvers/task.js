@@ -69,7 +69,7 @@ export default {
    deleteAllTask: async () => {
       try {
          const result = await Task.deleteMany()
-         return result.deletedCount
+         return result.acknowledged
       } catch (error) {
          return Promise.reject(new GraphQLError(error.message))
       }
