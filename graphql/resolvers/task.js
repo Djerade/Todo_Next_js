@@ -57,9 +57,12 @@ export default {
 
    deleteTask: async ({ _id }) => {
       try {
-         const taskDelected = await Task.findByIdAndDelete({ _id: `${_id}` }, { new: true })
-         return {
-            ...taskDelected._doc
+         const task = await Task.findById({ _id: `${_id}` });
+         if (task) {
+            const taskDelected = await Task.findByIdAndDelete({ _id: `${_id}` }, { new: true })
+            return {
+               ...taskDelected._doc
+            }
          }
       } catch (error) {
          return Promise.reject(new GraphQLError(error.message))

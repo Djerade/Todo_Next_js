@@ -8,9 +8,6 @@ const DoneTask = `
     _id: String!,
     status: String!
 `
-const returnTaskDelete = `
-    retour: Boolen
-`
 const UpdateTask = `
     _id: String!,
     title: String,
