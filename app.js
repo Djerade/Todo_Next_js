@@ -1,14 +1,19 @@
 import {graphqlHTTP} from 'express-graphql';
 import express from 'express';
 import  cors  from 'cors';
+import dotenv from 'dotenv';
+
 
 //import
 import { db } from './Config/db.js';
 import { resolver } from "./graphql/resolvers/index.js";
 import { schema } from "./graphql/schema/index.js";
 
+
+dotenv.config();
+
 //Port
-const PORT = process.env.PORT || 5000;
+const PORT = process.env.PORT;
 
 //initalisation du serveur
 const app = express();

@@ -1,6 +1,8 @@
 import mongoose from 'mongoose';
+import dotenv from 'dotenv';
 
-const MONGODB_URL = process.env.MONGODB_URL || 'mongodb://0.0.0.0:27017/Todo'
+dotenv.config();
+const MONGODB_URL = process.env.MONGODB_URL 
 
 export const db = mongoose.connect(MONGODB_URL, {
       useNewUrlParser: true,
